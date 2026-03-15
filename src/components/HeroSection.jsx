@@ -40,24 +40,7 @@ export function HeroSection() {
                 >
                   {hero.affiliation.lab.name}
                 </a>
-                {hero.affiliation.advisors.length > 0 && (
-                  <>
-                    {" "}currently interning with{" "}
-                    {hero.affiliation.advisors.map((advisor, i) => (
-                      <span key={advisor.name}>
-                        {i > 0 && " and "}
-                        <a
-                          href={advisor.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-white/80 hover:text-white transition-colors"
-                        >
-                          {advisor.name}
-                        </a>
-                      </span>
-                    ))}
-                  </>
-                )}
+            
               </p>
             </motion.div>
 
@@ -75,16 +58,21 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.6 }}
-              className="mb-8"
+              className="mb-10"
             >
-              <fieldset className="border border-white/20 px-5 pb-4 pt-1 text-left">
-                <legend className="px-2 text-[10px] font-mono uppercase tracking-widest text-white/50">
+              <fieldset className="border border-white/20 px-7 pb-6 pt-2 text-left rounded-md">
+                <legend className="px-3 text-xs font-mono uppercase tracking-widest text-white/50">
                   Education
                 </legend>
-                <p className="font-display font-bold text-sm text-white">{edu.degree}</p>
-                <p className="text-xs text-muted-foreground">{edu.university} — {edu.location}</p>
-                <p className="text-xs text-muted-foreground">{edu.period} · CGPA: {edu.cgpa}</p>
-                <p className="text-xs text-white/50 mt-1">{edu.honors.join(" · ")} · {edu.medals}</p>
+                <p className="font-display font-bold text-xl md:text-2xl text-white mt-1">{edu.degree}</p>
+                <p className="text-base text-muted-foreground mt-2">{edu.university}</p>
+                <p className="text-sm text-muted-foreground">{edu.location}</p>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-3">
+                  <span className="text-sm text-white/70 font-mono">{edu.period}</span>
+                  <span className="text-sm font-semibold text-white">CGPA: {edu.cgpa}</span>
+                </div>
+                <p className="text-sm text-white/50 mt-3 leading-relaxed">{edu.honors.join(" · ")}</p>
+                <p className="text-sm text-white/50 leading-relaxed">{edu.medals}</p>
               </fieldset>
             </motion.div>
 
@@ -92,12 +80,15 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="space-y-4"
+              className="flex flex-wrap gap-3 mb-2 justify-center md:justify-start"
             >
-              {hero.bio.map((paragraph, i) => (
-                <p key={i} className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto md:mx-0">
-                  {paragraph}
-                </p>
+              {hero.researchInterests.map((interest) => (
+                <span
+                  key={interest}
+                  className="px-4 py-2 border border-white/25 rounded-full text-sm font-mono text-white/80 bg-white/5"
+                >
+                  {interest}
+                </span>
               ))}
             </motion.div>
 

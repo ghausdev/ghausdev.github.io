@@ -22,10 +22,7 @@
     "photo": "/profile.jpeg",
     "affiliation": {
       "text": "I'm a BS Software Engineering student @",
-      "lab": { "name": "FAST-NUCES, Islamabad", "url": "https://www.nu.edu.pk/" },
-      "advisors": [
-        { "name": "Dr. Qian Liu", "url": "https://www.uwinnipeg.ca/" }
-      ]
+      "lab": { "name": "FAST-NUCES, Islamabad", "url": "https://www.nu.edu.pk/" }
     },
     "education": {
       "degree": "Bachelor of Science in Software Engineering",
@@ -36,9 +33,10 @@
       "honors": ["Rector's List (2024–2026)", "Dean's List (2023–2024)"],
       "medals": "4x Gold Medalist (Fall '25, Spring '25, Fall '24, Fall '23), Silver Medalist (Spring '24)"
     },
-    "bio": [
-      "My research spans computer vision, continual learning, and generative AI for medical imaging. Currently a Mitacs Globalink Research Intern at the University of Winnipeg, developing conditional diffusion models for breast cancer radiogenomics under Dr. Qian Liu.",
-      "I also work on real-time violence detection using deep learning, anomaly detection in aviation cyber-physical systems, and hybrid quantum-classical AI for medical diagnostics."
+    "researchInterests": [
+      "Computer Vision",
+      "Natural Language Processing",
+      "Deep Learning"
     ],
     "skills": {
       "languages": ["C/C++", "Python", "SQL", "LaTeX"],
