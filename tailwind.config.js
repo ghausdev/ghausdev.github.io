@@ -8,14 +8,13 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        '3xl': "0px",
-        '2xl': "0px",
-        xl: "0px",
-        lg: "0px",
-        md: "0px",
-        sm: "0px",
-        full: "0px",
-        DEFAULT: "0px",
+        '3xl': "1.5rem",
+        '2xl': "1rem",
+        xl: "0.75rem",
+        lg: "0.625rem",
+        md: "0.5rem",
+        sm: "0.375rem",
+        DEFAULT: "0.5rem",
       },
       colors: {
         background: "hsl(var(--background) / <alpha-value>)",
@@ -103,10 +102,15 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "fade-up": {
+          "0%": { opacity: "0", transform: "translateY(16px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-up": "fade-up 0.5s ease-out forwards",
       },
     },
   },

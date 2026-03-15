@@ -12,7 +12,7 @@
   --background: 0 0% 4%;
   --foreground: 0 0% 98%;
 
-  --card: 0 0% 4%;
+  --card: 0 0% 7%;
   --card-foreground: 0 0% 98%;
 
   --popover: 0 0% 4%;
@@ -36,7 +36,17 @@
   --border: 0 0% 12%;
   --input: 0 0% 12%;
   --ring: 0 0% 83.1%;
-  --radius: 0px;
+  --radius: 0.625rem;
+
+  --surface-1: rgba(255, 255, 255, 0.03);
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --surface-3: rgba(255, 255, 255, 0.09);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 @layer base {
@@ -55,7 +65,27 @@
 
 @layer utilities {
   .glass {
-    @apply bg-background/80 backdrop-blur-md border-b border-white/5;
+    @apply backdrop-blur-2xl backdrop-saturate-[1.8] border-b border-white/[0.06];
+    background: rgba(10, 10, 10, 0.72);
+  }
+  
+  .glass-card {
+    background: var(--surface-1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    background: var(--surface-2);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .surface-elevated {
+    background: var(--surface-1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.15);
   }
   
   .text-gradient {
@@ -64,5 +94,9 @@
 
   .link-underline {
     @apply relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .section-divider {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   }
 }

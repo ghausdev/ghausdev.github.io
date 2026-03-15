@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa";
 import data from "../../data.json";
@@ -7,10 +7,25 @@ import data from "../../data.json";
 const hero = data.hero;
 
 const iconMap = {
-  "mail": Mail,
-  "github": SiGithub,
-  "linkedin": FaLinkedinIn,
+  mail: Mail,
+  github: SiGithub,
+  linkedin: FaLinkedinIn,
 };
+
+const ease = [0.25, 0.1, 0.25, 1];
+
+function FadeUp({ children, delay = 0, className = "" }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, duration: 0.7, ease }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export function HeroSection() {
   const edu = hero.education;
@@ -18,117 +33,116 @@ export function HeroSection() {
   return (
     <section
       id="about"
-      className="pt-32 pb-32 flex items-center justify-center min-h-[90vh]"
+      className="pt-36 pb-36 flex items-center justify-center min-h-[92vh]"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-5xl mx-auto px-6 w-full">
         <div className="flex flex-col items-center md:items-start">
-
           <div className="text-center md:text-left w-full max-w-3xl">
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              <p className="text-xl md:text-3xl italic text-muted-foreground leading-relaxed max-w-2xl mb-10">
+            <FadeUp delay={0.1}>
+              <p className="text-lg md:text-2xl italic text-muted-foreground leading-relaxed max-w-2xl mb-8">
                 {hero.affiliation.text}{" "}
                 <a
                   href={hero.affiliation.lab.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/80 hover:text-white transition-colors"
+                  className="text-white/80 hover:text-white transition-colors duration-300"
                 >
                   {hero.affiliation.lab.name}
                 </a>
-            
               </p>
-            </motion.div>
+            </FadeUp>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-            >
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold font-mono tracking-tight mb-6 text-white lowercase">
+            <FadeUp delay={0.05}>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight mb-10 text-white lowercase">
                 {hero.name}
               </h1>
-            </motion.div>
+            </FadeUp>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25, duration: 0.6 }}
-              className="mb-10"
-            >
-              <fieldset className="border border-white/20 px-7 pb-6 pt-2 text-left rounded-md">
-                <legend className="px-3 text-xs font-mono uppercase tracking-widest text-white/50">
+            <FadeUp delay={0.2}>
+              <div className="surface-elevated rounded-xl p-6 md:p-8 mb-10 text-left">
+                <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/40 mb-4">
                   Education
-                </legend>
-                <p className="font-display font-bold text-xl md:text-2xl text-white mt-1">{edu.degree}</p>
-                <p className="text-base text-muted-foreground mt-2">{edu.university}</p>
-                <p className="text-sm text-muted-foreground">{edu.location}</p>
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-3">
-                  <span className="text-sm text-white/70 font-mono">{edu.period}</span>
-                  <span className="text-sm font-semibold text-white">CGPA: {edu.cgpa}</span>
+                </p>
+                <p className="font-display font-bold text-xl md:text-2xl text-white leading-tight">
+                  {edu.degree}
+                </p>
+                <p className="text-base text-muted-foreground mt-3">
+                  {edu.university}
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  {edu.location}
+                </p>
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-5 pt-5 border-t border-white/[0.06]">
+                  <span className="text-sm text-white/60 font-mono">
+                    {edu.period}
+                  </span>
+                  <span className="hidden sm:block w-1 h-1 rounded-full bg-white/20" />
+                  <span className="text-sm font-semibold text-white">
+                    CGPA: {edu.cgpa}
+                  </span>
                 </div>
-                <p className="text-sm text-white/50 mt-3 leading-relaxed">{edu.honors.join(" · ")}</p>
-                <p className="text-sm text-white/50 leading-relaxed">{edu.medals}</p>
-              </fieldset>
-            </motion.div>
+                <p className="text-sm text-white/40 mt-4 leading-relaxed">
+                  {edu.honors.join(" · ")}
+                </p>
+                <p className="text-sm text-white/40 leading-relaxed">
+                  {edu.medals}
+                </p>
+              </div>
+            </FadeUp>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="flex flex-wrap gap-3 mb-2 justify-center md:justify-start"
-            >
-              {hero.researchInterests.map((interest) => (
-                <span
-                  key={interest}
-                  className="px-4 py-2 border border-white/25 rounded-full text-sm font-mono text-white/80 bg-white/5"
-                >
-                  {interest}
-                </span>
-              ))}
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.6 }}
-              className="mt-8 flex flex-wrap gap-2 justify-center md:justify-start"
-            >
-              {[...hero.skills.languages, ...hero.skills.libraries, ...hero.skills.tools].map((skill) => (
-                <span key={skill} className="px-3 py-1 border border-white/15 text-[11px] font-mono text-white/50">
-                  {skill}
-                </span>
-              ))}
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="flex flex-wrap items-center justify-center md:justify-start gap-6 mt-10"
-              data-no-custom-cursor
-            >
-              {hero.socials.map((social) => {
-                const Icon = iconMap[social.icon];
-                return (
-                  <a
-                    key={social.icon}
-                    href={social.url}
-                    target={social.url.startsWith("mailto:") ? undefined : "_blank"}
-                    rel={social.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                    title={social.label}
-                    aria-label={social.label}
-                    className="text-muted-foreground hover:text-white transition-colors"
+            <FadeUp delay={0.3}>
+              <div className="flex flex-wrap gap-3 mb-10 justify-center md:justify-start">
+                {hero.researchInterests.map((interest, i) => (
+                  <motion.span
+                    key={interest}
+                    initial={{ opacity: 0, scale: 0.92 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.35 + i * 0.06, duration: 0.5, ease }}
+                    className="px-5 py-2.5 rounded-full text-sm font-mono text-white/80 bg-white/[0.05] border border-white/[0.1] hover:bg-white/[0.08] hover:border-white/[0.18] transition-all duration-300"
                   >
-                    <Icon className="w-6 h-6" />
-                  </a>
-                );
-              })}
-            </motion.div>
+                    {interest}
+                  </motion.span>
+                ))}
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={0.38}>
+              <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-12">
+                {[...hero.skills.languages, ...hero.skills.libraries, ...hero.skills.tools].map((skill, i) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 rounded-md border border-white/[0.08] text-[11px] font-mono text-white/40 hover:text-white/60 hover:border-white/[0.15] transition-all duration-300"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={0.44}>
+              <div
+                className="flex flex-wrap items-center justify-center md:justify-start gap-5"
+                data-no-custom-cursor
+              >
+                {hero.socials.map((social) => {
+                  const Icon = iconMap[social.icon];
+                  return (
+                    <a
+                      key={social.icon}
+                      href={social.url}
+                      target={social.url.startsWith("mailto:") ? undefined : "_blank"}
+                      rel={social.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                      title={social.label}
+                      aria-label={social.label}
+                      className="w-11 h-11 rounded-xl flex items-center justify-center text-white/40 hover:text-white hover:bg-white/[0.08] border border-transparent hover:border-white/[0.1] transition-all duration-300"
+                    >
+                      <Icon className="w-[18px] h-[18px]" />
+                    </a>
+                  );
+                })}
+              </div>
+            </FadeUp>
 
           </div>
         </div>
