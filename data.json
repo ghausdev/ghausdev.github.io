@@ -45,8 +45,8 @@
     },
     "socials": [
       { "icon": "mail", "label": "Email", "url": "mailto:i222564@nu.edu.pk" },
-      { "icon": "github", "label": "GitHub", "url": "https://github.com/ghaus-malik" },
-      { "icon": "linkedin", "label": "LinkedIn", "url": "https://linkedin.com/in/ghaus-malik" }
+      { "icon": "github", "label": "GitHub", "url": "https://github.com/ghausdev" },
+      { "icon": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/ghausmalik" }
     ]
   },
 
@@ -166,6 +166,7 @@
     }
   ],
 
+  "showNews": false,
   "news": [
     { "date": "Jan 2026", "content": "Started Mitacs Globalink Research Internship at the University of Winnipeg, Canada under Dr. Qian Liu." },
     { "date": "Fall 2025", "content": "Gold Medal — Secured highest semester GPA in a batch of 350 students (4th consecutive Gold)." },

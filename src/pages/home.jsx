@@ -7,6 +7,7 @@ import { NewsSection } from "@/components/NewsSection";
 import { ServiceSection } from "@/components/ServiceSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import data from "../../data.json";
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
         <ExperienceSection />
         <ResearchSection />
         <ProjectsSection />
-        <NewsSection />
+        {data.showNews && <NewsSection />}
         <ServiceSection />
         <ContactSection />
       </main>
