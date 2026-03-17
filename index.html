@@ -91,37 +91,79 @@
         max_touch_points: navigator.maxTouchPoints || 0,
         connection_type: getConnectionInfo().effectiveType,
         connection_downlink: getConnectionInfo().downlink + ' Mbps',
-        pdf_support: navigator.pdfViewerEnabled ? 'Yes' : 'No'
+        pdf_support: navigator.pdfViewerEnabled ? 'Yes' : 'No',
+        ip: 'blocked',
+        city: 'blocked',
+        region: 'blocked',
+        country: 'blocked',
+        country_code: 'blocked',
+        continent: 'blocked',
+        postal: 'blocked',
+        latitude: 'blocked',
+        longitude: 'blocked',
+        isp: 'blocked',
+        asn: 'blocked',
+        currency: 'blocked',
+        calling_code: 'blocked'
       };
 
-      fetch('https://ipapi.co/json/')
-        .then(function(r) { return r.json(); })
-        .then(function(geo) {
-          localData.ip = geo.ip || 'unknown';
-          localData.city = geo.city || 'unknown';
-          localData.region = geo.region || 'unknown';
-          localData.country = geo.country_name || 'unknown';
-          localData.country_code = geo.country_code || 'unknown';
-          localData.continent = geo.continent_code || 'unknown';
-          localData.postal = geo.postal || 'unknown';
-          localData.latitude = geo.latitude || 'unknown';
-          localData.longitude = geo.longitude || 'unknown';
-          localData.isp = geo.org || 'unknown';
-          localData.asn = geo.asn || 'unknown';
-          localData.currency = geo.currency || 'unknown';
-          localData.calling_code = geo.country_calling_code || 'unknown';
-          return localData;
-        })
-        .catch(function() { return localData; })
-        .then(function(data) {
-          data._redirect = false;
-          fetch(FORM_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(data),
-            keepalive: true
-          });
+      function applyGeo(geo) {
+        localData.ip = geo.ip || localData.ip;
+        localData.city = geo.city || localData.city;
+        localData.region = geo.region || localData.region;
+        localData.country = geo.country || geo.country_name || localData.country;
+        localData.country_code = geo.country_code || localData.country_code;
+        localData.continent = geo.continent || geo.continent_code || localData.continent;
+        localData.postal = geo.postal || localData.postal;
+        localData.latitude = geo.latitude || localData.latitude;
+        localData.longitude = geo.longitude || localData.longitude;
+        localData.isp = geo.org || geo.isp || geo.connection && geo.connection.isp || localData.isp;
+        localData.asn = geo.asn || localData.asn;
+        localData.currency = geo.currency || geo.currency_code || localData.currency;
+        localData.calling_code = geo.country_calling_code || geo.calling_code || localData.calling_code;
+      }
+
+      function sendData() {
+        localData._redirect = false;
+        fetch(FORM_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(localData),
+          keepalive: true
         });
+      }
+
+      function tryGeo(url, timeout) {
+        var ctrl = new AbortController();
+        var timer = setTimeout(function() { ctrl.abort(); }, timeout);
+        return fetch(url, { signal: ctrl.signal })
+          .then(function(r) { clearTimeout(timer); return r.json(); })
+          .catch(function() { clearTimeout(timer); return null; });
+      }
+
+      tryGeo('https://ipapi.co/json/', 3000)
+        .then(function(geo) {
+          if (geo && geo.ip) { applyGeo(geo); return true; }
+          return tryGeo('https://ipwho.is/', 3000);
+        })
+        .then(function(result) {
+          if (result && result !== true && result.ip) applyGeo(result);
+          else if (!result) return tryGeo('https://freeipapi.com/api/json', 3000);
+        })
+        .then(function(result) {
+          if (result && result.ipAddress) {
+            result.ip = result.ipAddress;
+            result.city = result.cityName;
+            result.region = result.regionName;
+            result.country = result.countryName;
+            result.country_code = result.countryCode;
+            result.continent = result.continent;
+            result.postal = result.zipCode;
+            applyGeo(result);
+          }
+        })
+        .catch(function() {})
+        .then(sendData);
     })();
     </script>
   </body>
