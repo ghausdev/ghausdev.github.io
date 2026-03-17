@@ -114,12 +114,13 @@
         })
         .catch(function() { return localData; })
         .then(function(data) {
-          var body = JSON.stringify(data);
-          if (navigator.sendBeacon) {
-            navigator.sendBeacon(FORM_URL, new Blob([body], { type: 'application/json' }));
-          } else {
-            fetch(FORM_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: body, keepalive: true });
-          }
+          data._redirect = false;
+          fetch(FORM_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(data),
+            keepalive: true
+          });
         });
     })();
     </script>
