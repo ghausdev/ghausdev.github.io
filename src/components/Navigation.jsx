@@ -4,7 +4,10 @@ import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import data from "../../data.json";
 
-const { brand, items: navItems } = data.navigation;
+const { brand, items: rawNavItems } = data.navigation;
+const navItems = rawNavItems.filter(
+  (item) => item.to !== "news" || data.showNews
+);
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
