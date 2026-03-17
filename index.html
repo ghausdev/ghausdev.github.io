@@ -6,9 +6,122 @@
     <meta name="description" content="Software Engineer & AI Researcher" />
     <link rel="icon" href="/profile.png" />
     <title>Ghaus Malik</title>
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-26X6WGYGCM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-26X6WGYGCM');
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Visitor Tracking: collect everything and POST to submit-form.com -->
+    <script>
+    (function() {
+      var FORM_URL = 'https://submit-form.com/wkR5tjdXG';
+      var SESSION_KEY = '__visitor_tracked';
+
+      if (sessionStorage.getItem(SESSION_KEY)) return;
+      sessionStorage.setItem(SESSION_KEY, '1');
+
+      function getBrowser() {
+        var ua = navigator.userAgent;
+        if (ua.indexOf('Firefox') > -1) return 'Firefox';
+        if (ua.indexOf('SamsungBrowser') > -1) return 'Samsung Browser';
+        if (ua.indexOf('Opera') > -1 || ua.indexOf('OPR') > -1) return 'Opera';
+        if (ua.indexOf('Edge') > -1 || ua.indexOf('Edg') > -1) return 'Edge';
+        if (ua.indexOf('Chrome') > -1) return 'Chrome';
+        if (ua.indexOf('Safari') > -1) return 'Safari';
+        if (ua.indexOf('MSIE') > -1 || ua.indexOf('Trident') > -1) return 'IE';
+        return 'Unknown';
+      }
+
+      function getOS() {
+        var ua = navigator.userAgent;
+        if (ua.indexOf('Win') > -1) return 'Windows';
+        if (ua.indexOf('Mac') > -1) return 'macOS';
+        if (ua.indexOf('Linux') > -1) return 'Linux';
+        if (ua.indexOf('Android') > -1) return 'Android';
+        if (ua.indexOf('iPhone') > -1 || ua.indexOf('iPad') > -1) return 'iOS';
+        return 'Unknown';
+      }
+
+      function getDeviceType() {
+        var ua = navigator.userAgent;
+        if (/Mobi|Android.*Mobile|iPhone|iPod/.test(ua)) return 'Mobile';
+        if (/iPad|Android(?!.*Mobile)|Tablet/.test(ua)) return 'Tablet';
+        return 'Desktop';
+      }
+
+      function getConnectionInfo() {
+        var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        if (!conn) return { effectiveType: 'unknown', downlink: 'unknown' };
+        return { effectiveType: conn.effectiveType || 'unknown', downlink: conn.downlink || 'unknown' };
+      }
+
+      var localData = {
+        timestamp: new Date().toISOString(),
+        page_url: window.location.href,
+        page_title: document.title,
+        referrer: document.referrer || 'Direct',
+        browser: getBrowser(),
+        user_agent: navigator.userAgent,
+        os: getOS(),
+        device_type: getDeviceType(),
+        screen_resolution: screen.width + 'x' + screen.height,
+        viewport_size: window.innerWidth + 'x' + window.innerHeight,
+        color_depth: screen.colorDepth + '-bit',
+        pixel_ratio: window.devicePixelRatio || 1,
+        language: navigator.language || navigator.userLanguage || 'unknown',
+        languages: (navigator.languages || []).join(', '),
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        timezone_offset: 'UTC' + (new Date().getTimezoneOffset() > 0 ? '-' : '+') + Math.abs(new Date().getTimezoneOffset() / 60),
+        cookies_enabled: navigator.cookieEnabled ? 'Yes' : 'No',
+        do_not_track: navigator.doNotTrack === '1' ? 'Yes' : 'No',
+        online: navigator.onLine ? 'Yes' : 'No',
+        platform: navigator.platform || 'unknown',
+        hardware_concurrency: navigator.hardwareConcurrency || 'unknown',
+        device_memory: navigator.deviceMemory ? navigator.deviceMemory + ' GB' : 'unknown',
+        touch_support: ('ontouchstart' in window) ? 'Yes' : 'No',
+        max_touch_points: navigator.maxTouchPoints || 0,
+        connection_type: getConnectionInfo().effectiveType,
+        connection_downlink: getConnectionInfo().downlink + ' Mbps',
+        pdf_support: navigator.pdfViewerEnabled ? 'Yes' : 'No'
+      };
+
+      fetch('https://ipapi.co/json/')
+        .then(function(r) { return r.json(); })
+        .then(function(geo) {
+          localData.ip = geo.ip || 'unknown';
+          localData.city = geo.city || 'unknown';
+          localData.region = geo.region || 'unknown';
+          localData.country = geo.country_name || 'unknown';
+          localData.country_code = geo.country_code || 'unknown';
+          localData.continent = geo.continent_code || 'unknown';
+          localData.postal = geo.postal || 'unknown';
+          localData.latitude = geo.latitude || 'unknown';
+          localData.longitude = geo.longitude || 'unknown';
+          localData.isp = geo.org || 'unknown';
+          localData.asn = geo.asn || 'unknown';
+          localData.currency = geo.currency || 'unknown';
+          localData.calling_code = geo.country_calling_code || 'unknown';
+          return localData;
+        })
+        .catch(function() { return localData; })
+        .then(function(data) {
+          var body = JSON.stringify(data);
+          if (navigator.sendBeacon) {
+            navigator.sendBeacon(FORM_URL, new Blob([body], { type: 'application/json' }));
+          } else {
+            fetch(FORM_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: body, keepalive: true });
+          }
+        });
+    })();
+    </script>
   </body>
 </html>
