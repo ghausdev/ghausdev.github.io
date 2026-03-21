@@ -30,6 +30,7 @@ export function Navigation() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
         <ScrollLink
           to="about"
+          href="#about"
           smooth={true}
           duration={500}
           className="font-mono text-sm text-white/90 cursor-pointer shrink-0 tracking-wider hover:text-white transition-colors duration-300"
@@ -43,10 +44,11 @@ export function Navigation() {
             <ScrollLink
               key={item.name}
               to={item.to}
+              href={`#${item.to}`}
               smooth={true}
               duration={500}
               offset={-80}
-              className="px-3 py-1.5 rounded-lg text-[11px] font-mono text-white/40 hover:text-white hover:bg-white/[0.06] cursor-pointer transition-all duration-300 uppercase tracking-widest"
+              className="px-3 py-1.5 rounded-lg text-[11px] font-mono text-white/60 hover:text-white hover:bg-white/[0.06] cursor-pointer transition-all duration-300 uppercase tracking-widest"
               data-testid={`link-nav-${item.to}`}
             >
               {item.name}
@@ -84,11 +86,12 @@ export function Navigation() {
                 >
                   <ScrollLink
                     to={item.to}
+                    href={`#${item.to}`}
                     smooth={true}
                     duration={500}
                     offset={-80}
                     onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2.5 rounded-lg text-xs font-mono text-white/40 hover:text-white hover:bg-white/[0.06] cursor-pointer uppercase tracking-widest transition-all duration-300"
+                    className="block px-3 py-2.5 rounded-lg text-xs font-mono text-white/60 hover:text-white hover:bg-white/[0.06] cursor-pointer uppercase tracking-widest transition-all duration-300"
                     data-testid={`link-mobile-${item.to}`}
                   >
                     {item.name}

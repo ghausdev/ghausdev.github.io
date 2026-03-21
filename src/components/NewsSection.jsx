@@ -18,7 +18,7 @@ export function NewsSection() {
             className="glass-card rounded-xl p-5"
             data-testid={`card-news-${i}`}
           >
-            <span className="inline-block px-2.5 py-1 rounded-md text-[10px] font-mono uppercase tracking-widest text-white/40 bg-white/[0.04] border border-white/[0.06] mb-4">
+            <span className="inline-block px-2.5 py-1 rounded-md text-[10px] font-mono uppercase tracking-widest text-white/60 bg-white/[0.04] border border-white/[0.06] mb-4">
               {item.date}
             </span>
             <p className="text-sm text-muted-foreground leading-relaxed">

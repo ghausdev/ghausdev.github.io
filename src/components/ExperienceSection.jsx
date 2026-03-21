@@ -22,12 +22,12 @@ export function ExperienceSection() {
               <p className="font-display font-bold text-base md:text-lg text-white leading-snug">
                 {exp.org}
               </p>
-              <span className="text-[11px] font-mono text-white/35 shrink-0 md:pt-1 tracking-wide">
+              <span className="text-[11px] font-mono text-white/60 shrink-0 md:pt-1 tracking-wide">
                 {exp.dateRange}
               </span>
             </div>
 
-            <p className="text-xs font-mono text-white/30 mb-5 tracking-wide">
+            <p className="text-xs font-mono text-white/60 mb-5 tracking-wide">
               Advisor: {exp.advisor}
             </p>
 

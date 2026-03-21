@@ -46,7 +46,7 @@ export function HeroSection() {
                   href={hero.affiliation.lab.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/80 hover:text-white transition-colors duration-300"
+                  className="text-white/80 hover:text-white underline underline-offset-4 decoration-white/30 hover:decoration-white/60 transition-colors duration-300"
                 >
                   {hero.affiliation.lab.name}
                 </a>
@@ -61,7 +61,7 @@ export function HeroSection() {
 
             <FadeUp delay={0.2}>
               <div className="surface-elevated rounded-xl p-6 md:p-8 mb-10 text-left">
-                <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/40 mb-4">
+                <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/60 mb-4">
                   Education
                 </p>
                 <p className="font-display font-bold text-xl md:text-2xl text-white leading-tight">
@@ -82,10 +82,10 @@ export function HeroSection() {
                     CGPA: {edu.cgpa}
                   </span>
                 </div>
-                <p className="text-sm text-white/40 mt-4 leading-relaxed">
+                <p className="text-sm text-white/60 mt-4 leading-relaxed">
                   {edu.honors.join(" · ")}
                 </p>
-                <p className="text-sm text-white/40 leading-relaxed">
+                <p className="text-sm text-white/60 leading-relaxed">
                   {edu.medals}
                 </p>
               </div>
@@ -112,7 +112,7 @@ export function HeroSection() {
                 {[...hero.skills.languages, ...hero.skills.libraries, ...hero.skills.tools].map((skill, i) => (
                   <span
                     key={skill}
-                    className="px-3 py-1 rounded-md border border-white/[0.08] text-[11px] font-mono text-white/40 hover:text-white/60 hover:border-white/[0.15] transition-all duration-300"
+                    className="px-3 py-1 rounded-md border border-white/[0.08] text-[11px] font-mono text-white/60 hover:text-white/80 hover:border-white/[0.15] transition-all duration-300"
                   >
                     {skill}
                   </span>
@@ -135,7 +135,7 @@ export function HeroSection() {
                       rel={social.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
                       title={social.label}
                       aria-label={social.label}
-                      className="w-11 h-11 rounded-xl flex items-center justify-center text-white/40 hover:text-white hover:bg-white/[0.08] border border-transparent hover:border-white/[0.1] transition-all duration-300"
+                      className="w-11 h-11 rounded-xl flex items-center justify-center text-white/60 hover:text-white hover:bg-white/[0.08] border border-transparent hover:border-white/[0.1] transition-all duration-300"
                     >
                       <Icon className="w-[18px] h-[18px]" />
                     </a>
@@ -157,11 +157,11 @@ export function HeroSection() {
                 className="group flex flex-col items-center justify-center gap-4 w-full aspect-square rounded-2xl surface-elevated border border-white/[0.08] hover:border-white/[0.2] transition-all duration-500 hover:scale-[1.03]"
                 data-no-custom-cursor
               >
-                <FileText className="w-10 h-10 text-white/30 group-hover:text-white/80 transition-colors duration-300" />
-                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/40 group-hover:text-white/80 transition-colors duration-300">
+                <FileText className="w-10 h-10 text-white/60 group-hover:text-white/80 transition-colors duration-300" />
+                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/60 group-hover:text-white/80 transition-colors duration-300">
                   Research CV
                 </span>
-                <span className="text-[10px] font-mono text-white/20 group-hover:text-white/50 transition-colors duration-300">
+                <span className="text-[10px] font-mono text-white/50 group-hover:text-white/70 transition-colors duration-300">
                   View PDF
                 </span>
               </a>
@@ -180,8 +180,8 @@ export function HeroSection() {
               className="group flex items-center gap-3 px-8 py-4 rounded-xl surface-elevated border border-white/[0.08] hover:border-white/[0.2] transition-all duration-300"
               data-no-custom-cursor
             >
-              <FileText className="w-5 h-5 text-white/40 group-hover:text-white/80 transition-colors duration-300" />
-              <span className="text-xs font-mono uppercase tracking-[0.15em] text-white/50 group-hover:text-white/80 transition-colors duration-300">
+              <FileText className="w-5 h-5 text-white/60 group-hover:text-white/80 transition-colors duration-300" />
+              <span className="text-xs font-mono uppercase tracking-[0.15em] text-white/60 group-hover:text-white/80 transition-colors duration-300">
                 Research CV
               </span>
             </a>

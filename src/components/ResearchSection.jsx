@@ -17,7 +17,7 @@ function PaperCard({ paper, index, featured = false }) {
     >
       <div className={`${featured ? "h-36" : "h-28"} bg-gradient-to-br from-white/[0.02] to-white/[0.06] flex items-center justify-center px-6 border-b border-white/[0.06]`}>
         <div className="text-center">
-          <span className="font-mono text-xs text-white/30 uppercase tracking-widest">
+          <span className="font-mono text-xs text-white/60 uppercase tracking-widest">
             {paper.venue} {paper.year}
           </span>
           {paper.status && (
@@ -39,7 +39,7 @@ function PaperCard({ paper, index, featured = false }) {
             <a
               key={j}
               href="#"
-              className="text-xs text-white/40 hover:text-white transition-colors duration-300 font-mono underline underline-offset-4 decoration-white/15 hover:decoration-white/40"
+              className="text-xs text-white/60 hover:text-white transition-colors duration-300 font-mono underline underline-offset-4 decoration-white/30 hover:decoration-white/60"
               data-testid={`link-paper-${index}-${link}`}
             >
               {link}

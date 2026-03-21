@@ -18,7 +18,7 @@ export function ServiceSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, ease }}
         >
-          <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/35 mb-6">
+          <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/60 mb-6">
             Leadership Roles
           </p>
           <div className="space-y-5">
@@ -44,7 +44,7 @@ export function ServiceSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, delay: 0.08, ease }}
         >
-          <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/35 mb-6">
+          <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/60 mb-6">
             Teaching Assistant & Lab Demonstrator
           </p>
           <div className="flex flex-wrap gap-3">
@@ -60,8 +60,8 @@ export function ServiceSection() {
                 <span className="font-display font-semibold text-white tracking-wide">
                   {item.course}
                 </span>
-                <span className="text-white/20 mx-2">/</span>
-                <span className="font-mono text-[11px] text-white/35">
+                <span className="text-white/50 mx-2">/</span>
+                <span className="font-mono text-[11px] text-white/60">
                   {item.semester} · {item.advisor}
                 </span>
               </motion.span>
@@ -76,7 +76,7 @@ export function ServiceSection() {
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, delay: 0.16, ease }}
         >
-          <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/35 mb-6">
+          <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/60 mb-6">
             Honors & Awards
           </p>
           <div className="space-y-3">

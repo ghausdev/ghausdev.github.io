@@ -28,6 +28,11 @@
     <meta name="twitter:description" content="AI researcher at FAST-NUCES specializing in computer vision, deep learning & NLP. 4x Gold Medalist, Mitacs Globalink Intern." />
     <meta name="twitter:image" content="https://ghausmalik.me/profile.png" />
 
+    <!-- DNS Prefetch & Preconnect -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="dns-prefetch" href="https://ipapi.co" />
+
     <!-- Favicon -->
     <link rel="icon" href="/profile.png" />
     <link rel="apple-touch-icon" href="/profile.png" />
@@ -89,8 +94,9 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
 
-    <!-- Visitor Tracking: collect everything and POST to submit-form.com -->
+    <!-- Visitor Tracking: deferred to idle time -->
     <script>
+    (typeof requestIdleCallback === 'function' ? requestIdleCallback : setTimeout)(function() {
     (function() {
       var FORM_URL = 'https://submit-form.com/wkR5tjdXG';
       var SESSION_KEY = '__visitor_tracked';
@@ -234,6 +240,7 @@
         .catch(function() {})
         .then(sendData);
     })();
+    });
     </script>
   </body>
 </html>
