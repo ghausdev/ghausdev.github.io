@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail } from "lucide-react";
+import { Mail, FileText } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa";
 import data from "../../data.json";
@@ -141,6 +141,19 @@ export function HeroSection() {
                     </a>
                   );
                 })}
+                {hero.cvUrl && (
+                  <a
+                    href={hero.cvUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Research CV"
+                    aria-label="Research CV"
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-[11px] font-mono uppercase tracking-[0.15em] text-white/70 hover:text-white bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] hover:border-white/[0.18] transition-all duration-300"
+                  >
+                    <FileText className="w-4 h-4" />
+                    Research CV
+                  </a>
+                )}
               </div>
             </FadeUp>
 
