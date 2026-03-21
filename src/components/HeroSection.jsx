@@ -36,8 +36,8 @@ export function HeroSection() {
       className="pt-36 pb-36 flex items-center justify-center min-h-[92vh]"
     >
       <div className="max-w-5xl mx-auto px-6 w-full">
-        <div className="flex flex-col items-center md:items-start">
-          <div className="text-center md:text-left w-full max-w-3xl">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
+          <div className="text-center md:text-left w-full md:flex-1">
 
             <FadeUp delay={0.1}>
               <p className="text-lg md:text-2xl italic text-muted-foreground leading-relaxed max-w-2xl mb-8">
@@ -141,24 +141,52 @@ export function HeroSection() {
                     </a>
                   );
                 })}
-                {hero.cvUrl && (
-                  <a
-                    href={hero.cvUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Research CV"
-                    aria-label="Research CV"
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-[11px] font-mono uppercase tracking-[0.15em] text-white/70 hover:text-white bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] hover:border-white/[0.18] transition-all duration-300"
-                  >
-                    <FileText className="w-4 h-4" />
-                    Research CV
-                  </a>
-                )}
               </div>
             </FadeUp>
 
           </div>
+
+          {hero.cvUrl && (
+            <FadeUp delay={0.5} className="hidden md:flex w-52 shrink-0 self-center">
+              <a
+                href={hero.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Research CV"
+                aria-label="Research CV"
+                className="group flex flex-col items-center justify-center gap-4 w-full aspect-square rounded-2xl surface-elevated border border-white/[0.08] hover:border-white/[0.2] transition-all duration-500 hover:scale-[1.03]"
+                data-no-custom-cursor
+              >
+                <FileText className="w-10 h-10 text-white/30 group-hover:text-white/80 transition-colors duration-300" />
+                <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-white/40 group-hover:text-white/80 transition-colors duration-300">
+                  Research CV
+                </span>
+                <span className="text-[10px] font-mono text-white/20 group-hover:text-white/50 transition-colors duration-300">
+                  View PDF
+                </span>
+              </a>
+            </FadeUp>
+          )}
         </div>
+
+        {hero.cvUrl && (
+          <FadeUp delay={0.5} className="md:hidden mt-8 flex justify-center">
+            <a
+              href={hero.cvUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Research CV"
+              aria-label="Research CV"
+              className="group flex items-center gap-3 px-8 py-4 rounded-xl surface-elevated border border-white/[0.08] hover:border-white/[0.2] transition-all duration-300"
+              data-no-custom-cursor
+            >
+              <FileText className="w-5 h-5 text-white/40 group-hover:text-white/80 transition-colors duration-300" />
+              <span className="text-xs font-mono uppercase tracking-[0.15em] text-white/50 group-hover:text-white/80 transition-colors duration-300">
+                Research CV
+              </span>
+            </a>
+          </FadeUp>
+        )}
       </div>
     </section>
   );
