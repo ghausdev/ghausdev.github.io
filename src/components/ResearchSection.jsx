@@ -73,6 +73,8 @@ export function ResearchSection() {
         <div className="flex justify-center mt-10">
           <button
             onClick={() => setExpanded(!expanded)}
+            aria-expanded={expanded}
+            aria-label={expanded ? "Show fewer publications" : "Show more publications"}
             className="px-8 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-sm font-mono text-white/50 hover:text-white hover:bg-white/[0.08] hover:border-white/[0.18] transition-all duration-300 tracking-wider uppercase"
           >
             {expanded ? "Show Less" : "Show More"}

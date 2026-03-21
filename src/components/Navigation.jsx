@@ -21,6 +21,7 @@ export function Navigation() {
 
   return (
     <nav
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled ? "glass shadow-[0_1px_24px_rgba(0,0,0,0.25)]" : "bg-transparent"
       }`}
@@ -54,6 +55,8 @@ export function Navigation() {
         </div>
 
         <button
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
           className="md:hidden text-foreground p-2 -mr-2 rounded-lg hover:bg-white/[0.06] transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           data-testid="button-mobile-menu"

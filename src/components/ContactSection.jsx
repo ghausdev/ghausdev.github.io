@@ -58,7 +58,7 @@ export function ContactSection() {
             );
 
             return item.href ? (
-              <a key={i} href={item.href} data-testid={item.testId}>
+              <a key={i} href={item.href} aria-label={item.label} data-testid={item.testId}>
                 {content}
               </a>
             ) : (
